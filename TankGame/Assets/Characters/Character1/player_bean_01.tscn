@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://d3p1skj3xxpwe"]
+
+[ext_resource type="PackedScene" uid="uid://cn13g17nax87k" path="res://Assets/Characters/Character1/playerBean.glb" id="1_5a1tc"]
+[ext_resource type="Script" path="res://Assets/Characters/Character1/player_bean.gd" id="1_heuco"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_u5ltm"]
+radius = 0.85
+height = 3.1
+
+[node name="CharacterBody3D" type="CharacterBody3D"]
+script = ExtResource("1_heuco")
+
+[node name="playerBean" parent="." instance=ExtResource("1_5a1tc")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+shape = SubResource("CapsuleShape3D_u5ltm")
+
+[node name="SpringArmPivot" type="Node3D" parent="."]
+
+[node name="SpringArm3D" type="SpringArm3D" parent="SpringArmPivot"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1216, 0)
+spring_length = 3.0
+
+[node name="Camera3D" type="Camera3D" parent="SpringArmPivot/SpringArm3D"]
